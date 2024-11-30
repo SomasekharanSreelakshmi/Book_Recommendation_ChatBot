@@ -14,8 +14,9 @@ This project is a chatbot built to recommend books based on user preferences. It
    ```bash
    git clone https://github.com/SomasekharanSreelakshmi/book_Recommendation_chatbot.git
 
-pip install -r requirements.txt
-rasa run
+   pip install -r requirements.txt
+
+   rasa run
 
 # Usage 
 To get book recommendations, start a conversation with the bot by typing hello in the terminal.
