@@ -6,7 +6,6 @@ This project is a chatbot built to recommend books based on user preferences. It
 - Python
 - Rasa
 - Flask
-- Docker
 
 ## Installation
 
