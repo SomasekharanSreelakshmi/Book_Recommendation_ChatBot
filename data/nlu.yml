@@ -1,0 +1,41 @@
+version: "3.1"
+
+nlu:
+  - intent: welcome
+    examples: |
+      - Hi
+      - Hello
+      - Hey
+      - Good morning
+      - Hi there
+      - Hello, I need assistance
+
+  - intent: ask_book_recommendation
+    examples: |
+      - Can you recommend a book?
+      - Suggest me a book
+      - What book should I read?
+      - Recommend a top-rated book
+      - Any good books to read?
+
+  - intent: ask_book_details
+    examples: |
+      - Tell me more about [The Midnight Library](book_name)
+      - Can you provide details for [The Silent Patient](book_name)?
+      - I want to know about the book [Educated](book_name)
+      - What is [The Book Thief](book_name) about?
+
+  - intent: ask_user_reviews
+    examples: |
+      - What do users think about [Klara and the Sun](book_name)?
+      - Tell me user reviews for [Sapiens](book_name)
+      - How is [Where the Crawdads Sing](book_name) rated by users?
+      - What are the reviews for [The Night Circus](book_name)?
+
+  - intent: thank_you
+    examples: |
+      - Thanks
+      - Thank you
+      - Appreciate it
+      - Thank you so much
+      - Thanks a lot

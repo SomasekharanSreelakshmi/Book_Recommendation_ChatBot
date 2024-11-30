@@ -1,0 +1,57 @@
+<!-- index.html (HTML + JavaScript) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Recommendation Bot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Book Recommendation Bot</h1>
+        <div id="chatbox">
+            <div id="messages"></div>
+        </div>
+        <input type="text" id="user-input" placeholder="Type your message here...">
+        <button id="send-button">Send</button>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $('#send-button').click(function() {
+                const userMessage = $('#user-input').val();
+                if (!userMessage.trim()) return; // Avoid sending empty messages
+
+                $('#messages').append(`<div class="user-message">You: ${userMessage}</div>`);
+                $('#user-input').val('');
+
+                // Send the user message to the Flask server
+                $.ajax({
+                    url: '/chat',
+                    method: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify({ message: userMessage }),
+                    success: function(response) {
+                        const botMessage = response[0] || "Sorry, I didn't understand that.";
+                        $('#messages').append(`<div class="bot-message">Bot: ${botMessage}</div>`);
+                    },
+                    error: function(xhr, status, error) {
+                    console.error("Error details:", xhr.responseText); // Log the error response
+                    $('#messages').append(`<div class="bot-message">Bot: Failed to connect to the server.</div>`);
+                }
+
+                });
+            });
+
+            // Press Enter to send the message
+            $('#user-input').keypress(function(e) {
+                if (e.which == 13) { 
+                    $('#send-button').click();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

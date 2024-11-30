@@ -1,0 +1,41 @@
+version: "3.1"
+
+stories:
+  - story: Test Welcome Intent
+    steps:
+      - user: |
+          - Hi
+        intent: welcome
+      - action: utter_welcome
+
+  - story: Test Book Recommendation
+    steps:
+      - user: |
+          - Can you recommend a book?
+        intent: ask_book_recommendation
+      - action: action_recommend_book
+
+  - story: Test Book Details for "The Midnight Library"
+    steps:
+      - user: |
+          - Tell me more about [The Midnight Library](book_name)
+        intent: ask_book_details
+        entities:
+          - book_name: "The Midnight Library"
+      - action: action_get_book_details
+
+  - story: Test User Reviews for "Klara and the Sun"
+    steps:
+      - user: |
+          - What do users think about [Klara and the Sun](book_name)?
+        intent: ask_user_reviews
+        entities:
+          - book_name: "Klara and the Sun"
+      - action: action_get_user_reviews
+
+  - story: Test Thank You Response
+    steps:
+      - user: |
+          - Thanks
+        intent: thank_you
+      - action: utter_thanks

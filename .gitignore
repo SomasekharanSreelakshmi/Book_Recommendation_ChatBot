@@ -1,0 +1,23 @@
+# Ignore config and environment files
+.env/
+.config/
+.keras/
+.rasa/
+
+# Ignore compiled files and temporary data
+__pycache__/
+*.pyc
+*.pyo
+
+# Ignore machine learning models
+models/
+results/
+
+# Ignore logs and debug files
+*.log
+
+# Ignore virtual environment
+env/
+
+# Ignore Docker build cache
+*.tar
